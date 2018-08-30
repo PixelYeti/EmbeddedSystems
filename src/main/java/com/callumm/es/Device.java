@@ -8,6 +8,7 @@ public class Device {
     private InetAddress address;
     private LocalDateTime lastSeen;
     private LocalDateTime lastOpened;
+    private LocalDateTime lastTamper;
     private boolean batteryOk;
 
     public Device(InetAddress address, LocalDateTime lastSeen) {
@@ -45,5 +46,13 @@ public class Device {
 
     public void setBatteryOk(boolean batteryOk) {
         this.batteryOk = batteryOk;
+    }
+
+    public LocalDateTime getLastTamper() {
+        return lastTamper;
+    }
+
+    public void setLastTamper(LocalDateTime lastTamper) {
+        this.lastTamper = lastTamper;
     }
 }

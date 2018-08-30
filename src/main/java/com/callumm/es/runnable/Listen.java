@@ -30,7 +30,6 @@ public class Listen implements Runnable {
                     // Reject connection
                     continue;
                 }
-                System.out.println(receivedInfo.trim());
                 boolean skip = false;
                 for (InetAddress address : listAllLocalAddresses()) {
                     if (address.getHostAddress().equalsIgnoreCase(receivePacket.getAddress().getHostAddress())) {

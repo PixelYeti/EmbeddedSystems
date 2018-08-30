@@ -36,11 +36,10 @@ public class Communicate implements Runnable {
             for (String kvPair : splitInfo) {
                 if (kvPair.toCharArray()[0] == '\u0000')
                     continue;
-                System.out.println(kvPair.trim());
                 if (kvPair.trim().length() == 0)
                     continue;
-                String key = kvPair.split(":")[0];
-                String value = kvPair.split(":")[1];
+                String key = kvPair.split(":")[0].trim();
+                String value = kvPair.split(":")[1].trim();
 
                 switch (key.toLowerCase()) {
                     case "discover":
@@ -48,20 +47,33 @@ public class Communicate implements Runnable {
                         break;
                     case "battery": {
                         Device device = DeviceManager.getConnectedDevice(address);
-                        if (device == null)
-                            break;
+                        if (device == null) {
+                            DeviceManager.connectDevice(new Device(address, LocalDateTime.now()));
+                            device = DeviceManager.getConnectedDevice(address);
+                        }
                         device.setBatteryOk(value.equalsIgnoreCase("ok"));
                         DeviceManager.updateConnectedDevice(device);
                         break;
                     }
                     case "lastopened": {
                         Device device = DeviceManager.getConnectedDevice(address);
-                        if (device == null)
-                            break;
-
+                        if (device == null) {
+                            DeviceManager.connectDevice(new Device(address, LocalDateTime.now()));
+                            device = DeviceManager.getConnectedDevice(address);
+                        }
                         if (value.equalsIgnoreCase("1"))
                             device.setLastOpened(LocalDateTime.now());
-                        //device.setLastOpened(LocalDateTime.parse(value, DateTimeFormatter.ISO_DATE_TIME));
+                        DeviceManager.updateConnectedDevice(device);
+                        break;
+                    }
+                    case "tamper": {
+                        Device device = DeviceManager.getConnectedDevice(address);
+                        if (device == null) {
+                            DeviceManager.connectDevice(new Device(address, LocalDateTime.now()));
+                            device = DeviceManager.getConnectedDevice(address);
+                        }
+                        if (value.equalsIgnoreCase("1"))
+                            device.setLastTamper(LocalDateTime.now());
                         DeviceManager.updateConnectedDevice(device);
                         break;
                     }
