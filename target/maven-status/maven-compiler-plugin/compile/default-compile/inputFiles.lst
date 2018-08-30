@@ -1,0 +1,9 @@
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/SpringApplication.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/utility/StringUtils.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/runnable/Communicate.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/runnable/Listen.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/DataController.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/Device.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/DeviceManager.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/Server.java
+/home/callum/IdeaProjects/EmbeddedSystems/src/main/java/com/callumm/es/runnable/Discover.java
